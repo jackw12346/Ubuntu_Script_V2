@@ -77,12 +77,6 @@ sudo apt-get remove nmap
 sudo apt-get remove snort
 sudo apt-get remove wireshark
 
-# Enable block dangerous and deceptive content in Firefox
-# TODO: Open Firefox and edit its settings
-
-# Disable SSH root login
-sudo vim /etc/ssh/sshd_config (set "PermitRootLogin no")
-
 # Disable empty SSH passwords
 sudo vim /etc/ssh/sshd_config (set "PermitEmptyPasswords no")
 
