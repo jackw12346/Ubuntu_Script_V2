@@ -138,3 +138,8 @@ allow-guest=false
 greeter0hide-users=true
 greeter-show-manual-login=true
 autologin-user=none
+
+# Updates
+
+sudo apt update 
+sudo apt upgrade 
