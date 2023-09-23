@@ -102,7 +102,7 @@ sudo vim /etc/pam.d/common-auth (Edit the file and remove suspicious entry)
 sudo vim /etc/pam.d/common-auth (Edit the file and configure faillock)
 
 # Set a secure maximum password age
-sudo vim /etc/login.defs (Edit the file and set PASS_MAX_DAYS)
+sudo vim /etc/login.defs (Edit the file and set PASS_MAX_
 
 # Set a secure minimum password age
 sudo vim /etc/login.defs (Edit the file and set PASS_MIN_DAYS)
