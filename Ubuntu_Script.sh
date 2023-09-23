@@ -143,3 +143,33 @@ autologin-user=none
 
 sudo apt update 
 sudo apt upgrade 
+
+# Get all users from the sudoers file
+users=$(grep -v '^#' /etc/sudoers | awk '{print $1}')
+
+# Write the users to a file called sudo_users.txt
+echo "$users" > sudo_users.txt
+
+# Get all users on the system
+users=$(getent passwd | cut -d':' -f1)
+
+# Write the users to a file called all_users.txt
+echo "$users" > all_users.txt
+
+# Get all groups on the system
+groups=$(getent group | cut -d ':' -f1)
+
+# Create a file to store the output
+output_file="group_members.txt"
+
+# Write the header row to the file
+echo "Group:Members" > $output_file
+
+# Iterate through all groups and write the members to the file
+for group in $groups; do
+  # Get the members of the group
+  members=$(getent group $group | cut -d ':' -f4)
+
+  # Write the group and its members to the file
+  echo "$group:$members" >> $output_file
+done
