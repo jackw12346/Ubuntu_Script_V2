@@ -77,29 +77,11 @@ sudo apt-get remove nmap
 sudo apt-get remove snort
 sudo apt-get remove wireshark
 
-# Disable empty SSH passwords
-sudo vim /etc/ssh/sshd_config (set "PermitEmptyPasswords no")
-
 # Enable APT secure repository checks
 # TODO: Ensure secure sources.list configuration
 
 # Remove malicious script 'sabotage'
 sudo rm /lib/.core/sabotage
-
-# Remove malicious PAM backdoor
-sudo vim /etc/pam.d/common-auth (Edit the file and remove suspicious entry)
-
-# Configure account lockout policy
-sudo vim /etc/pam.d/common-auth (Edit the file and configure faillock)
-
-# Set a secure maximum password age
-sudo vim /etc/login.defs (Edit the file and set PASS_MAX_
-
-# Set a secure minimum password age
-sudo vim /etc/login.defs (Edit the file and set PASS_MIN_DAYS)
-
-# Set a minimum password length
-sudo vim /etc/security/pwquality.conf (Edit the file and set minlen)
 
 # Set screen timeout policy
 gsettings set org.gnome.desktop.session idle-delay 300
