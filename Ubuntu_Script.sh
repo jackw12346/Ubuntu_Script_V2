@@ -109,3 +109,70 @@ sudo vim /etc/login.defs (Edit the file and set PASS_MIN_DAYS)
 
 # Set a minimum password length
 sudo vim /etc/security/pwquality.conf (Edit the file and set minlen)
+
+# Set screen timeout policy
+gsettings set org.gnome.desktop.session idle-delay 300
+
+# Enable automatic screen lock
+gsettings set org.gnome.desktop.screensaver lock-enabled true
+
+# Enable automatic updates
+# TODO: Use GUI for auto updates
+
+# Disable automatic login
+sudo sed -i 's/AutomaticLoginEnable=True/AutomaticLoginEnable=False/' /etc/gdm3/custom.conf
+
+# Lock the root account
+sudo passwd -l root
+
+# Remove prohibited MP3 files
+locate *.mp3 | xargs sudo rm -f
+
+# Enable UFW firewall
+sudo ufw enable
+
+# Disable NFS
+sudo systemctl stop nfs-kernel-server nfs-server nfsdcld nfs-mountd nfs-idmapd nfs-blkmap
+sudo systemctl disable nfs-kernel-server nfs-server nfsdcld nfs-mountd nfs-idmapd nfs-blkmap
+
+# Disable Nginx
+sudo systemctl stop nginx
+sudo systemctl disable nginx
+
+# Install clamtk
+apt-get install clamtk
+
+# Run the ClamAV scan
+freshclam
+
+# Set automatic updates
+System settings>software & updates>Updates
+Automatically check for updates
+Important security updates
+
+# Search for all prohibited files
+find / -name “*.{extension}” –type f
+
+# Configure the firewall
+apt-get install ufw / yum install ufw
+ufw enable
+ufw status
+
+# Edit the lightdm.conf file
+Ubuntu 
+Edit /etc/lightdm/lightdm.conf or /usr/share/lightdm/lightdm.conf/50-ubuntu.conf
+allow-guest=false
+greeter0hide-users=true
+greeter-show-manual-login=true
+autologin-user=none
+
+# Ask the user if Apache needs to be installed
+echo "Do you want to install Apache? (y/n)"
+read answer
+
+if [[ "$answer" == "y" ]]; then
+    apt-get install apache2
+    apt-get upgrade apache2
+
+    # Harden Apache
+    # TODO: Add Apache hardening tasks here
