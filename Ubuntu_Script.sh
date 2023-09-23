@@ -40,9 +40,6 @@ sudo ufw allow 'Apache Secure'
 sudo systemctl start ssh
 sudo systemctl enable ssh
 
-# Remove insecure sudoers rule
-sudo vim /etc/sudoers (remove any `ALL=(ALL:ALL) NOPASSWD: ALL` lines)
-
 # Enable IPv4 TIME-WAIT ASSASSINATION
 echo "net.ipv4.tcp_rfc1337 = 1" | sudo tee -a /etc/sysctl.conf
 
