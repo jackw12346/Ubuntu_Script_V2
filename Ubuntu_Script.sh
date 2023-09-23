@@ -138,14 +138,3 @@ allow-guest=false
 greeter0hide-users=true
 greeter-show-manual-login=true
 autologin-user=none
-
-# Ask the user if Apache needs to be installed
-echo "Do you want to install Apache? (y/n)"
-read answer
-
-if [[ "$answer" == "y" ]]; then
-    apt-get install apache2
-    apt-get upgrade apache2
-
-    # Harden Apache
-    # TODO: Add Apache hardening tasks here
